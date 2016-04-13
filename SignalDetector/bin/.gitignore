@@ -1,3 +1,15 @@
 /seq_1_SNR_+10dB.dat
 /Main.class
 /seq_2_SNR_10dB.dat
+/SignalDetector/
+/Sequence/
+/Manager/
+/Threshold/
+/Detector/
+/sequence/
+/detector/
+/threshold/
+/seq_1_SNR_-10dB.dat
+/seq_1_SNR_0dB.dat
+/seq_2_SNR_-10dB.dat
+/seq_2_SNR_0dB.dat
