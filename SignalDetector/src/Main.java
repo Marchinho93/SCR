@@ -23,21 +23,20 @@ public class Main {
 		SequenceManager sm1 = new SequenceManager("src/seq_2_SNR_-10dB.dat", 100000, 1000);
 		sm1.fillSequence();
 		Sequence s1 = sm1.getSequence();
-		System.out.println(Detector.calculateSignalRate(s1, threshold_Neg, 100000, 1000));
-		System.out.println(s1.getBlocks()[50].calculateBlockPower());
+		System.out.println("SignalRate:" + Detector.calculateSignalRate(s1, threshold_Neg, 100000, 1000));
+		System.out.println("SignalPower:" + s1.getBlocks()[50].calculateBlockPower());
 		
 		SequenceManager sm2 = new SequenceManager("src/seq_2_SNR_0dB.dat", 100000, 1000);
 		sm2.fillSequence();
 		Sequence s2 = sm2.getSequence();
-		System.out.println(Detector.calculateSignalRate(s2, threshold_0, 100000, 1000));
-		
-		System.out.println(s2.getBlocks()[50].calculateBlockPower());
+		System.out.println("SignalRate:" + Detector.calculateSignalRate(s2, threshold_0, 100000, 1000));
+		System.out.println("SignalPower:" + s2.getBlocks()[50].calculateBlockPower());
 		
 		SequenceManager sm3 = new SequenceManager("src/seq_2_SNR_10dB.dat", 100000, 1000);
 		sm3.fillSequence();
 		Sequence s3 = sm3.getSequence();
-		System.out.println(Detector.calculateSignalRate(s2, threshold_Pos, 100000, 1000));
-		System.out.println(s3.getBlocks()[50].calculateBlockPower());
+		System.out.println("SignalRate:" + Detector.calculateSignalRate(s2, threshold_Pos, 100000, 1000));
+		System.out.println("SignalPower:" + s3.getBlocks()[50].calculateBlockPower());
 	}
 		
 }
