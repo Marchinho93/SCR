@@ -1,9 +1,9 @@
 package threshold;
 public class ThresholdManager {
-	double N;
-	Noise noise;
-	double snr;
-	double threshold;
+	private double N;
+	private Noise noise;
+	private double snr;
+	private double threshold;
 	
 	public double getThreshold() {
 		return threshold;

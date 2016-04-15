@@ -3,10 +3,10 @@ package sequence;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class File {
-	BufferedReader reader;
-	
+	private BufferedReader reader;
 	public File(String path){
 		try {
 			this.reader = new BufferedReader(new FileReader(path));
@@ -15,7 +15,7 @@ public class File {
 		}
 	}
 	
-	public Sample readSample(){
+	public Sample readSample() throws IOException{
 		return new Sample(divide(this.reader.readLine()));
 	}
 	
@@ -24,12 +24,13 @@ public class File {
 		StringBuilder reString = new StringBuilder();
 		StringBuilder imString = new StringBuilder();
 		for(int i=0; i<s.length();i++){
-			char currChar = s.charAt(i); 
-			if(currChar!=' ' && step==0){
+			char currChar = s.charAt(i);
+			if(currChar=='	')
+				step++;
+			else {
+				if(step==0)
 				reString.append(currChar);
-				i++;
-			}
-			if(currChar!=' ' && step==1){
+				if(step==1)
 				imString.append(currChar);
 			}
 		}

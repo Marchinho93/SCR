@@ -15,8 +15,6 @@ public class Noise {
 		for(int i=0;i<N;i++)
 			this.noisePowerArray[i] = this.getValue();
 		Arrays.sort(this.noisePowerArray);
-		for(int i = 0; i<this.noisePowerArray.length;i++)
-			System.out.println(" "+ this.noisePowerArray[i]);
 	}
 	
 	//Calcolo della potenza integrato alla generazione del segnale di rumore
