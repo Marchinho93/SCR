@@ -1,16 +1,18 @@
 package threshold;
-
 public class ThresholdManager {
-	int N;
-	Double[] noisePowerArray;
+	double N;
 	Noise noise;
-	int snr;
+	double snr;
+	double threshold;
 	
-	public ThresholdManager(int N, int snr){
-		this.N = N;
-		this.snr = snr;
-		this.noisePowerArray = new Double[this.N];
-		this.noise = new Noise(this.N, this.snr);
+	public double getThreshold() {
+		return threshold;
 	}
 
+	public ThresholdManager(double N, double snr, double Pfa){
+		this.N = N;
+		this.snr = snr;
+		this.noise = new Noise(this.N, this.snr);
+		this.threshold =this.noise.getArray()[(int) (N-(N*Pfa)-1)];
+	}
 }
