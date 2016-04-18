@@ -4,25 +4,44 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Noise {
+	Double[] reNoiseSignalArray;
+	Double[] imNoiseSignalArray;
 	Double[] noisePowerArray;
 	Random r;
 	double snr;
 
 	public Noise(double N, double snr) {
+		this.reNoiseSignalArray = new Double[(int) N];
+		this.imNoiseSignalArray = new Double[(int) N];
 		this.noisePowerArray = new Double[(int) N];
 		this.r = new Random();
 		this.snr = snr;
-		for(int i=0;i<N;i++)
-			this.noisePowerArray[i] = this.getValue();
+		for(int i=0;i<N;i++){
+			this.reNoiseSignalArray[i] = getValue();
+			this.imNoiseSignalArray[i] = getValue();
+			this.noisePowerArray[i] = calculatePower(this.reNoiseSignalArray[i], this.imNoiseSignalArray[i]);
+		}
 		Arrays.sort(this.noisePowerArray);
 	}
 	
-	//Calcolo della potenza integrato alla generazione del segnale di rumore
+	private Double calculatePower(Double re, Double im) {
+		Double power = Math.pow((re+im),2);
+		return power;
+	}
+	
+	public Double test(){
+		Double power=0.0;
+		for(int i=0;i<this.noisePowerArray.length;i++){
+			power+=calculatePower(this.reNoiseSignalArray[i],this.imNoiseSignalArray[i]);
+		}
+		return power/10000;
+	}
+
 	private Double getValue(){
 		Double snrLinear = this.linearize(this.snr);
-		Double sigma = Math.sqrt(1/snrLinear);
-		Double nextGaussian = this.r.nextGaussian();
-		return Math.pow(nextGaussian*sigma, 2); 
+		Double sigma = Math.sqrt((1/(snrLinear))/2);
+		Double nextGaussian = this.r.nextGaussian()*sigma;
+		return nextGaussian; 
 	}
 
 	private Double linearize(double snr) {
