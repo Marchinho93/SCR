@@ -21,7 +21,7 @@ public class Block {
 		for(int i=0;i<this.N; i++){
 			Double re = this.samples[i].getRe();
 			Double im = this.samples[i].getIm();
-			result += Math.sqrt((Math.pow(re, 2) + Math.pow(im, 2)));
+			result += ((Math.pow(re+ im, 2)));
 		}
 		return result/this.N;
 	}

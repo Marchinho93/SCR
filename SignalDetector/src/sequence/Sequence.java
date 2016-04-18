@@ -39,6 +39,15 @@ public class Sequence {
 	public Block[] getBlocks() {
 		return this.blocks;
 	}
+	
+	public double power(){
+		double power = 0.0;
+		for (int i=0; i<(N/Nb); i++){
+			power += this.blocks[i].calculateBlockPower();
+		}
+				
+		return (power/(N/Nb));
+	}
 
 	
 }
